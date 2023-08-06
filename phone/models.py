@@ -17,6 +17,9 @@ class Color(models.Model):
         verbose_name_plural = "رنگ‌ها"
         verbose_name = "رنگ"
 
+    def __str__(self):
+        return self.name
+
 
 class Brand(models.Model):
     name = models.CharField(verbose_name="نام برند", max_length=30, blank=False)
@@ -26,6 +29,9 @@ class Brand(models.Model):
 
     def get_absolute_url_delete(self):
         return reverse_lazy("phone:brand_delete", kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name_plural = "برند"
@@ -41,6 +47,9 @@ class Country(models.Model):
     def get_absolute_url_delete(self):
         return reverse_lazy("phone:country_delete", kwargs={"pk": self.pk})
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name_plural = "کشور"
         verbose_name = "کشور‌ها"
@@ -54,6 +63,9 @@ class Nationality(models.Model):
 
     def get_absolute_url_delete(self):
         return reverse_lazy("phone:nationality_delete", kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name_plural = "ملیت"
@@ -81,11 +93,27 @@ class Phone(models.Model):
     country = models.ForeignKey(
         Country, verbose_name="کشور", on_delete=models.CASCADE, blank=False
     )
+
     def get_absolute_url(self):
         return reverse_lazy("phone:phone_update", kwargs={"pk": self.pk})
 
     def get_absolute_url_delete(self):
         return reverse_lazy("phone:phone_delete", kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return "|".join(
+            [
+                self.model,
+                self.brand.name,
+                self.nationality.name,
+                self.color.name,
+                str(self.size),
+                str(self.price),
+                self.country.name,
+                str(self.inventory),
+            ]
+        )
+
     class Meta:
         verbose_name_plural = "گوشی"
         verbose_name = "گوشی‌ها"

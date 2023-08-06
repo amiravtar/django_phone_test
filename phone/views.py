@@ -1,10 +1,15 @@
 from typing import Optional, Type
 
 from django.forms.models import BaseModelForm
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import HttpResponse, render, get_object_or_404
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView, View
-
+from .queris import (
+    get_list_phone_nationality,
+    get_same_brand_and_nationality,
+    get_list_phone_brand,
+)
 from .models import Brand, Color, Country, Nationality, Phone
 
 
@@ -163,3 +168,53 @@ class Index(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, template_name=self.template_name)
+
+
+class PhoneByNationality(View):
+    template_name = "phone/filter_nationality.html"
+
+    def get(self, request, *args, **kwargs):
+        nationality = Nationality.objects.all()
+        return render(
+            request,
+            template_name=self.template_name,
+            context={"nationality": nationality},
+        )
+
+    def post(self, request, *args, **kwargs):
+        nationality = get_object_or_404(Nationality, id=request.POST["nationality"])
+        data = get_list_phone_nationality(nationality)
+        return JsonResponse(data=data, safe=False)
+
+
+class PhoneByBrand(View):
+    template_name = "phone/filter_brand.html"
+
+    def get(self, request, *args, **kwargs):
+        brands = Brand.objects.all()
+        return render(
+            request, template_name=self.template_name, context={"brand": brands}
+        )
+
+    def post(self, request, *args, **kwargs):
+        brand = get_object_or_404(Brand, id=request.POST["brand"])
+        data = get_list_phone_brand(brand)
+        return JsonResponse(data=data, safe=False)
+
+
+class BrandAndNationality(View):
+    template_name = "phone/filter_brand.html"
+
+    def get(self, request, *args, **kwargs):
+        brands = Brand.objects.all()
+        return render(
+            request, template_name=self.template_name, context={"brand": brands}
+        )
+
+
+class BrandAndNationality(View):
+    template_name = "phone/filter_brand.html"
+
+    def get(self, request, *args, **kwargs):
+        data = get_same_brand_and_nationality()
+        return JsonResponse(data=data, safe=False)

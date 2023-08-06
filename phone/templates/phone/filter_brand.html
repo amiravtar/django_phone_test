@@ -1,0 +1,17 @@
+{% extends 'phone/base.html' %}
+
+{% block title %}فیلتر با برند{% endblock title %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <label for="your-select">برند را انتخاب کنید</label>
+  <select id="your-select" name="brand">
+      {% for instance in brand %}
+          <option value="{{ instance.pk }}">{{ instance.name }}</option>
+      {% endfor %}
+  </select>
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock content %}
