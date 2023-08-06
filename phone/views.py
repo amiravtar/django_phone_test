@@ -1,16 +1,14 @@
 from typing import Optional, Type
 
 from django.forms.models import BaseModelForm
-from django.shortcuts import HttpResponse, render, get_object_or_404
 from django.http import JsonResponse
+from django.shortcuts import HttpResponse, get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView, View
-from .queris import (
-    get_list_phone_nationality,
-    get_same_brand_and_nationality,
-    get_list_phone_brand,
-)
+
 from .models import Brand, Color, Country, Nationality, Phone
+from .queris import (get_list_phone_brand, get_list_phone_nationality,
+                     get_same_brand_and_nationality)
 
 
 # Create your views here.

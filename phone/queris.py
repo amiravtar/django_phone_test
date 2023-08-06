@@ -1,6 +1,7 @@
-from .models import Brand, Color, Country, Nationality, Phone
-from django.db.models.query import QuerySet
 from django.db.models import F
+from django.db.models.query import QuerySet
+
+from .models import Brand, Color, Country, Nationality, Phone
 
 
 def get_list_phone_nationality(na: Nationality) -> QuerySet:

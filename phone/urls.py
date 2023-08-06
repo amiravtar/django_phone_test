@@ -1,26 +1,10 @@
 from django.urls import path
 
-from .views import (
-    BrandDelete,
-    BrandPut,
-    BrandUpdate,
-    ColorDelete,
-    ColorPut,
-    ColorUpdate,
-    CountryDelete,
-    CountryPut,
-    CountryUpdate,
-    Index,
-    NationalityDelete,
-    NationalityPut,
-    NationalityUpdate,
-    PhoneDelete,
-    PhonePut,
-    PhoneUpdate,
-    PhoneByNationality,
-    PhoneByBrand,
-    BrandAndNationality,
-)
+from .views import (BrandAndNationality, BrandDelete, BrandPut, BrandUpdate,
+                    ColorDelete, ColorPut, ColorUpdate, CountryDelete, CountryPut,
+                    CountryUpdate, Index, NationalityDelete, NationalityPut,
+                    NationalityUpdate, PhoneByBrand, PhoneByNationality, PhoneDelete,
+                    PhonePut, PhoneUpdate)
 
 app_name = "phone"
 urlpatterns = [
