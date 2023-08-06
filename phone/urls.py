@@ -36,6 +36,8 @@ urlpatterns = [
     path("brand/put", BrandPut.as_view(), name="brand_put"),
     path("brand/<int:pk>", BrandUpdate.as_view(), name="brand_update"),
     path("brand/<int:pk>/delete", BrandDelete.as_view(), name="brand_delete"),
+
+    # فیلتر های خاسته شده
     path("nationality/put", NationalityPut.as_view(), name="nationality_put"),
     path(
         "nationality/<int:pk>", NationalityUpdate.as_view(), name="nationality_update"
