@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import sys
 import os
+import sys
 
 if len(sys.argv) > 1:
     apps = sys.argv[1:]

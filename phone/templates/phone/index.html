@@ -1,0 +1,11 @@
+{% extends 'phone/base.html' %}
+{% block title %}اضافه کردن تلفن{% endblock title %}
+{% block content %}
+<ul>
+  <li><a href="{% url 'phone:phone_put' %}">اضافه کردن تلفن</a></li>
+  <li><a href="{% url 'phone:brand_put' %}">اضافه کردن برند</a></li>
+  <li><a href="{% url 'phone:color_put' %}">اضافه کردن رنگ</a></li>
+  <li><a href="{% url 'phone:nationality_put' %}">اضافه کردن ملیت</a></li>
+  <li><a href="{% url 'phone:country_put' %}">اضافه کردن کشور</a></li>
+</ul>
+{% endblock content %}

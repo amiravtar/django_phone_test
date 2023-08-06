@@ -1,5 +1,4 @@
 from .base import *
-
 from .config import SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!

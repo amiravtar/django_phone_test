@@ -1,1 +1,1 @@
-from setting.development import *
+from .setting.development import *

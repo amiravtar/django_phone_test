@@ -1,0 +1,9 @@
+{% extends 'phone/base.html' %}
+
+{% block title %}اضافه کردن تلفن{% endblock title %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+
+<a href="{{object.get_absolute_url}}"><button>حذف</button></a>
+{% endblock content %}

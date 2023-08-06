@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import sys
 import os
+import sys
 
 apps = sys.argv[1:]
 for i in apps:
